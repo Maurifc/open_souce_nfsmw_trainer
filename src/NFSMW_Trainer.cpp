@@ -13,8 +13,10 @@ int main(void)
     uintptr_t firstPointerAddr;
     uintptr_t decreaseMoneyAddr;
     uintptr_t speedTrapAddr;
+    uintptr_t infinityNitroAddr;
     const float speedTrapTotal = 2000.0;
     bool toggleNoFees = false;
+    bool toggleInfinityNitro = false;
 
     processId = Process::getProcessId(L"speed.exe");
 
@@ -33,6 +35,7 @@ int main(void)
     modBaseAddr = Process::getModuleBaseAddr(processId, L"speed.exe");
     firstPointerAddr = modBaseAddr + 0x0052FDC4;
     decreaseMoneyAddr = modBaseAddr + 0x16d7b5;
+    infinityNitroAddr = modBaseAddr + 0x292B01;
     speedTrapAddr = Process::resolvePointers(hProcess, firstPointerAddr, { 0x138 });
 
     while (GetExitCodeProcess(hProcess, &dwExit) && dwExit == STILL_ACTIVE) {
@@ -51,7 +54,21 @@ int main(void)
                 Memory::Patch(hProcess, (BYTE*)decreaseMoneyAddr, (BYTE*)"\x2b\xc2", 2);
                 std::cout << "No fees cheat disabled" << std::endl;
             }
+        //Infinity Nitro
+        } else if (GetAsyncKeyState(VK_NUMPAD3) & 1) {
+            toggleInfinityNitro = !toggleInfinityNitro;
+
+            if (toggleInfinityNitro) {
+                Memory::PatchWithNop(hProcess, (BYTE*)infinityNitroAddr, 4);
+                std::cout << "Infinity Nitro cheat enabled" << std::endl;
+            } else {
+                Memory::Patch(hProcess, (BYTE*)infinityNitroAddr, (BYTE*)"\xd8\x64\x24\x2c", 4);
+                std::cout << "Infinity Nitro cheat disabled" << std::endl;
+            }
        }
+
+        // NitroDecrementAddr = "speed.exe"+292B01
+        // Old Instruction (fsub dword ptr [esp+2C]) = D8 64 24 2C
 
         Sleep(10);
     }

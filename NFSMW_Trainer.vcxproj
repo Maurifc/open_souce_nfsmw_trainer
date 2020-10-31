@@ -142,15 +142,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\nfsmw.cpp" />
     <ClCompile Include="src\memory.cpp" />
     <ClCompile Include="src\proc.cpp" />
     <ClCompile Include="src\NFSMW_Trainer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\nfsmw.h" />
     <ClInclude Include="src\memory.h" />
     <ClInclude Include="src\proc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,27 +16,32 @@ int main(void)
     uintptr_t infinityNitroAddr;
     const float speedTrapTotal = 2000.0;
     bool toggleNoFees = false;
-    bool toggleInfinityNitro = false;
+    bool toggleInfinityNitro = false;    
 
     processId = Process::getProcessId(L"speed.exe");
 
     if (processId == 0) {
-        std::cout << "Falha ao obter process id!";
+        std::cout << "Failed when getting process Id!";
         return 1;
     }
 
     hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, processId);
 
     if (hProcess == INVALID_HANDLE_VALUE) {
-        std::cout << "Falha ao abrir processo ID: " << processId << std::endl;
+        std::cout << "Failed when opening process ID: " << processId << std::endl;
         return 1;
     }
 
+    //Base Address
     modBaseAddr = Process::getModuleBaseAddr(processId, L"speed.exe");
-    firstPointerAddr = modBaseAddr + 0x0052FDC4;
+
+    //Resolving multipointers
+    speedTrapAddr = Process::resolvePointers(hProcess, firstPointerAddr, { 0x138 });
+
+    //Instructions' adresses to be patched
+    firstPointerAddr = modBaseAddr + 0x52FDC4;
     decreaseMoneyAddr = modBaseAddr + 0x16d7b5;
     infinityNitroAddr = modBaseAddr + 0x292B01;
-    speedTrapAddr = Process::resolvePointers(hProcess, firstPointerAddr, { 0x138 });
 
     while (GetExitCodeProcess(hProcess, &dwExit) && dwExit == STILL_ACTIVE) {
         //Speed Trap 99999Km
@@ -51,6 +56,7 @@ int main(void)
                 Memory::PatchWithNop(hProcess, (BYTE*)decreaseMoneyAddr, 2);
                 std::cout << "No fees cheat enabled" << std::endl;
             } else {
+                // Old Instruction (sub eax,edx) = 2B C2
                 Memory::Patch(hProcess, (BYTE*)decreaseMoneyAddr, (BYTE*)"\x2b\xc2", 2);
                 std::cout << "No fees cheat disabled" << std::endl;
             }
@@ -62,15 +68,13 @@ int main(void)
                 Memory::PatchWithNop(hProcess, (BYTE*)infinityNitroAddr, 4);
                 std::cout << "Infinity Nitro cheat enabled" << std::endl;
             } else {
+                // Old Instruction (fsub dword ptr [esp+2C]) = D8 64 24 2C
                 Memory::Patch(hProcess, (BYTE*)infinityNitroAddr, (BYTE*)"\xd8\x64\x24\x2c", 4);
                 std::cout << "Infinity Nitro cheat disabled" << std::endl;
             }
        }
 
-        // NitroDecrementAddr = "speed.exe"+292B01
-        // Old Instruction (fsub dword ptr [esp+2C]) = D8 64 24 2C
-
-        Sleep(10);
+       Sleep(10);
     }
 
     CloseHandle(hProcess);

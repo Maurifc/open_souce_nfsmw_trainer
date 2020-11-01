@@ -24,12 +24,18 @@
     <ClCompile Include="src\memory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\NFSMW.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\proc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NFSMW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

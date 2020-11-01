@@ -142,11 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\NFSMW.cpp" />
     <ClCompile Include="src\memory.cpp" />
     <ClCompile Include="src\proc.cpp" />
     <ClCompile Include="src\NFSMW_Trainer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\NFSMW.h" />
     <ClInclude Include="src\memory.h" />
     <ClInclude Include="src\proc.h" />
   </ItemGroup>

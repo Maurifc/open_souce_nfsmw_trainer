@@ -15,12 +15,17 @@ private:
 	const float m_speedTrapTotal = 99999.0;
 	bool m_bZeroCostEnabled = false;
 	bool m_bInfinityNitroEnabled = false;
+	bool m_isAttached = false;
 
 public:
-	NFSMW();
+	NFSMW() {};
 	~NFSMW();
 
 	HANDLE& getProcessHandle() { return m_hProcess; }
+	bool isAttached() { return m_isAttached; }
+
+	bool attach();
+	void detach();
 
 	void enableSpeedTrapCheat();
 

@@ -14,8 +14,8 @@ private:
 	uintptr_t m_infinityNitroAddr;
 	uintptr_t m_unlockCarsAddr;
 	const float m_speedTrapTotal = 99999.0;
-	bool m_bZeroCostEnabled = false;
-	bool m_bInfinityNitroEnabled = false;
+	bool m_zeroCostEnabled = false;
+	bool m_infinityNitroEnabled = false;
 	bool m_unlockCarsEnabled = false;
 	bool m_isAttached = false;
 

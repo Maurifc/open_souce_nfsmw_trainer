@@ -60,9 +60,9 @@ void NFSMW::enableSpeedTrapCheat() {
 void NFSMW::toggleZeroCostCheat() {
 	assert(this->isAttached());
 
-	m_bZeroCostEnabled = !m_bZeroCostEnabled;
+	m_zeroCostEnabled = !m_zeroCostEnabled;
 
-	if (m_bZeroCostEnabled) {
+	if (m_zeroCostEnabled) {
 		Memory::PatchWithNop(m_hProcess, (BYTE*)m_zeroCostAddr, 2);
 		std::cout << "Zero Cost Cheat Enabled" << std::endl;
 	}
@@ -76,9 +76,9 @@ void NFSMW::toggleZeroCostCheat() {
 void NFSMW::toggleInfinityNitroCheat() {
 	assert(this->isAttached());
 
-	m_bInfinityNitroEnabled = !m_bInfinityNitroEnabled;
+	m_infinityNitroEnabled = !m_infinityNitroEnabled;
 
-	if (m_bInfinityNitroEnabled) {
+	if (m_infinityNitroEnabled) {
 		Memory::PatchWithNop(m_hProcess, (BYTE*)m_infinityNitroAddr, 4);
 		std::cout << "Infinity Nitro Cheat Enabled" << std::endl;
 	}

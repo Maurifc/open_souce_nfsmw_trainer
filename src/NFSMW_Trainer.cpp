@@ -47,16 +47,17 @@ int main(void)
             if (GetAsyncKeyState(VK_NUMPAD1) & 1) {
                 nfsmw.toggleInfinityNitroCheat();
 
-                //Zero Cost
             }
+            //Zero Cost
             else if (GetAsyncKeyState(VK_NUMPAD2) & 1) {
                 nfsmw.toggleZeroCostCheat();
 
-                //Speed Trap 99999Km
             }
+            //Speed Trap 99999Km
             else if (GetAsyncKeyState(VK_NUMPAD3) & 1) {
                 nfsmw.enableSpeedTrapCheat();
             }
+            //Unlock career's cars
             else if (GetAsyncKeyState(VK_NUMPAD4) & 1) {
                 nfsmw.toggleUnlockCars();
             }

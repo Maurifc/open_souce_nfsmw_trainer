@@ -12,9 +12,11 @@ private:
 	uintptr_t m_zeroCostAddr;
 	uintptr_t m_speedTrapAddr;
 	uintptr_t m_infinityNitroAddr;
+	uintptr_t m_unlockCarsAddr;
 	const float m_speedTrapTotal = 99999.0;
 	bool m_bZeroCostEnabled = false;
 	bool m_bInfinityNitroEnabled = false;
+	bool m_unlockCarsEnabled = false;
 	bool m_isAttached = false;
 
 public:
@@ -28,8 +30,7 @@ public:
 	void detach();
 
 	void enableSpeedTrapCheat();
-
 	void toggleZeroCostCheat();
-
 	void toggleInfinityNitroCheat();
+	void toggleUnlockCars();
 };

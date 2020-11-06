@@ -33,4 +33,5 @@ public:
 	void toggleZeroCostCheat();
 	void toggleInfinityNitroCheat();
 	void toggleUnlockCars();
+	void addMoney(UINT32 count);
 };

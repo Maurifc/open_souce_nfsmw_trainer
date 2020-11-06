@@ -105,3 +105,18 @@ void NFSMW::toggleUnlockCars() {
 		std::cout << "Unlock all Career's Cars Cheat Disabled" << std::endl;
 	}
 }
+
+void NFSMW::addMoney(UINT32 count) {
+	uintptr_t firstPtr = m_modBaseAddr + 0x51CF90;
+	uintptr_t moneyAddr = Process::resolvePointers(m_hProcess, firstPtr, { 0x10, 0xb4 });
+	UINT32 money = 0;
+
+	//Read current money
+	ReadProcessMemory(m_hProcess, (BYTE*) moneyAddr, &money, sizeof(money), NULL);
+	money += count;
+
+	//Write new money count
+	WriteProcessMemory(m_hProcess, (BYTE*) moneyAddr, &money, sizeof(money), NULL);
+
+	std::cout << "Add Money Cheat Enabled " << std::endl;
+}

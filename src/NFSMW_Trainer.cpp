@@ -24,6 +24,7 @@ void showMenu() {
         "* NUMPAD 2 - No Money Cost             *\n"
         "* NUMPAD 3 - Speed Trap (99.999Kmh)    *\n"
         "* NUMPAD 4 - Unlock all career's cars  *\n"
+        "* NUMPAD 5 - Add Money ($50.000)       *\n"
         "*                                      *\n"
         "****************************************\n\n\n";
 }
@@ -60,6 +61,10 @@ int main(void)
             //Unlock career's cars
             else if (GetAsyncKeyState(VK_NUMPAD4) & 1) {
                 nfsmw.toggleUnlockCars();
+            }
+            //Add money
+            else if (GetAsyncKeyState(VK_NUMPAD5) & 1) {
+                nfsmw.addMoney(50000);
             }
 
             Sleep(10);

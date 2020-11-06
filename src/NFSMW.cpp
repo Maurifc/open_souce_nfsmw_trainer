@@ -88,7 +88,7 @@ void NFSMW::toggleInfinityNitroCheat() {
 	}
 }
 
-void NFSMW::toggleUnlockCars() {
+void NFSMW::toggleUnlockAllSellingCars() {
 	assert(this->isAttached());
 	uintptr_t unlockCarsAddr = m_modBaseAddr + 0x18a644;
 

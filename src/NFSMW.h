@@ -26,6 +26,6 @@ public:
 	void setSpeedTrapTotalSpeed(const float totalSpeed);
 	void toggleZeroCostCheat();
 	void toggleInfinityNitroCheat();
-	void toggleUnlockCars();
+	void toggleUnlockAllSellingCars();
 	void addMoney(UINT32 count);
 };

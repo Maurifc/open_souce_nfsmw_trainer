@@ -56,7 +56,7 @@ int main(void)
             }
             //Speed Trap 99999Km
             else if (GetAsyncKeyState(VK_NUMPAD3) & 1) {
-                nfsmw.enableSpeedTrapCheat();
+                nfsmw.setSpeedTrapTotalSpeed(99999);
             }
             //Unlock career's cars
             else if (GetAsyncKeyState(VK_NUMPAD4) & 1) {

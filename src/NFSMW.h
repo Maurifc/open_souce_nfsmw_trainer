@@ -8,12 +8,6 @@ private:
 	HANDLE m_hProcess = INVALID_HANDLE_VALUE;
 	DWORD m_processId;
 	uintptr_t m_modBaseAddr;
-	uintptr_t m_firstPointerAddr;
-	uintptr_t m_zeroCostAddr;
-	uintptr_t m_speedTrapAddr;
-	uintptr_t m_infinityNitroAddr;
-	uintptr_t m_unlockCarsAddr;
-	const float m_speedTrapTotal = 99999.0;
 	bool m_zeroCostEnabled = false;
 	bool m_infinityNitroEnabled = false;
 	bool m_unlockCarsEnabled = false;
@@ -29,7 +23,7 @@ public:
 	bool attach();
 	void detach();
 
-	void enableSpeedTrapCheat();
+	void setSpeedTrapTotalSpeed(const float totalSpeed);
 	void toggleZeroCostCheat();
 	void toggleInfinityNitroCheat();
 	void toggleUnlockCars();
